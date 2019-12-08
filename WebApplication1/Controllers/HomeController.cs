@@ -33,6 +33,43 @@ namespace WebApplication1.Controllers
             Response.Redirect("/Home");
         }
 
+        public ActionResult RemoveUsers(int UserId = 0)
+        {
+            if (UserId > 0)
+            {
+                db.Users.Remove(db.Users.Where(x => x.UserId == UserId).FirstOrDefault());
+                db.SaveChanges();
+            }
+            Response.Redirect("/Home");
+            return View();
+        }
 
+        [HttpGet]
+        public ActionResult EditUsers(int UserId = 0)
+        {
+            ViewBag.UserId = UserId;
+            Users users = db.Users
+                .Where(o => o.UserId == UserId)
+                .FirstOrDefault();
+
+            ViewBag.name = users.Name;
+            ViewBag.userage = users.UserAge;
+            return View();
+        }
+        [HttpPost]
+        public void EditUsers(Users users)
+        {
+            Users user_update = db.Users
+                .Where(o => o.UserId == users.UserId)
+                .FirstOrDefault();
+
+            user_update.Name = users.Name;
+            user_update.UserAge = users.UserAge;
+
+            db.SaveChanges();
+            Response.Redirect("/Home");
+        }
     }
+
+
 }
