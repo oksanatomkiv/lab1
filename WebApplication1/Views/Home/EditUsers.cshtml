@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "EditUsers";
+}
+
+<h2>Змінити дані про користувача</h2>
+
+<form method="post" action="">
+    <input type="hidden" value="@ViewBag.UserId" name="id" />
+    <div class="form-group">
+        <label for="Name">Ім'я</label>
+        <input type="text" class="form-control" name="Name" id="Name" placeholder="Введіть ім'я" value="@ViewBag.name">
+    </div>
+    <div class="form-group">
+        <label for="UserAge">Вік</label>
+        <input type="number" class="form-control" name="UserAge" id="UserAge" placeholder="Введіть кількість років" value="@ViewBag.userage">
+    </div>
+    <button type="submit" class="btn btn-primary">Змінити</button>
+</form>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <h3>Гравці</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Гравець</th>
+                    <th scope="col">Вік</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in ViewBag.Users)
+                {
+                <tr>
+                    <td>@p.UserId</td>
+                    <td>@p.Name</td>
+                    <td>@p.UserAge</td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="/Home/AddUsers" role="button">Додати користувача</a>
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
